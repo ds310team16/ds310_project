@@ -1,0 +1,69 @@
+{
+	"name": "dataflow_geography",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Parquet_geography",
+						"type": "DatasetReference"
+					},
+					"name": "geography"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Parquet_odsgeography",
+						"type": "DatasetReference"
+					},
+					"name": "sinkgeography"
+				}
+			],
+			"transformations": [
+				{
+					"name": "selectgeography"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Country as string,",
+				"          CountryCode as string,",
+				"          Latitude as decimal(10,5),",
+				"          Longitude as decimal(10,5)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> geography",
+				"geography select(mapColumn(",
+				"          Country_Region = Country,",
+				"          Country_ISO3 = CountryCode,",
+				"          Latitude,",
+				"          Longitude",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectgeography",
+				"selectgeography sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          ID as integer,",
+				"          Updated_Date as date,",
+				"          Confirmed_Cases as integer,",
+				"          Confirmed__Cases_Change as integer,",
+				"          Country_ISO3 as string,",
+				"          Country_Region as string",
+				"     ),",
+				"     format: 'parquet',",
+				"     partitionFileNames:['Geography.snappy.parquet'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sinkgeography"
+			]
+		}
+	}
+}
