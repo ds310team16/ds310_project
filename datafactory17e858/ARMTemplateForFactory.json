@@ -4344,7 +4344,6 @@
 						"selectpolicy sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     format: 'parquet',",
-						"     partitionFileNames:['Policy'],",
 						"     umask: 0022,",
 						"     preCommands: [],",
 						"     postCommands: [],",
