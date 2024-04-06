@@ -25,6 +25,485 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/Parquet_odsrecoveries')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "ods16"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "CountryName",
+						"type": "UTF8"
+					},
+					{
+						"name": "CountryCode",
+						"type": "UTF8"
+					},
+					{
+						"name": "Jurisdiction",
+						"type": "UTF8"
+					},
+					{
+						"name": "Date",
+						"type": "INT96"
+					},
+					{
+						"name": "C1_School_closing",
+						"type": "INT64"
+					},
+					{
+						"name": "C1_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C2_Workplace_closing",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C2_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C3_Cancel_public_events",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C3_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C4_Restrictions_on_gatherings",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C4_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C5_Close_public_transport",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C5_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C6_Stay_at_home_requirements",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C6_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C7_Restrictions_on_internal_movement",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C7_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C8_International_travel_controls",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "E1_Income_support",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "E1_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "E2_Debt_contract_relief",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "E3_Fiscal_measures",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "E4_International_support",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H1_Public_information_campaigns",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H1_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "H2_Testing_policy",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H3_Contact_tracing",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H4_Emergency_investment_in_healthcare",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H5_Investment_in_vaccines",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H6_Facial_Coverings",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H6_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "H7_Vaccination_policy",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H7_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "H8_Protection_of_elderly_people",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H8_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "M1_Wildcard",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "StringencyIndex",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "StringencyIndexForDisplay",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "StringencyLegacyIndex",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "StringencyLegacyIndexForDisplay",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "GovernmentResponseIndex",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "GovernmentResponseIndexForDisplay",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "ContainmentHealthIndex",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "ContainmentHealthIndexForDisplay",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "EconomicSupportIndex",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "EconomicSupportIndexForDisplay",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "id",
+						"type": "UTF8"
+					},
+					{
+						"name": "rid",
+						"type": "UTF8"
+					},
+					{
+						"name": "self",
+						"type": "UTF8"
+					},
+					{
+						"name": "etag",
+						"type": "UTF8"
+					},
+					{
+						"name": "attachments",
+						"type": "UTF8"
+					},
+					{
+						"name": "ts",
+						"type": "INT64"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Parquet_policy')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "data_7cbcfb57-0660-4171-9783-c6d84bf0df3b_dbc98e38-2af0-4509-a6e1-1d3aed52afba.parquet",
+						"fileSystem": "policydata"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "CountryName",
+						"type": "UTF8"
+					},
+					{
+						"name": "CountryCode",
+						"type": "UTF8"
+					},
+					{
+						"name": "RegionName",
+						"type": "UTF8"
+					},
+					{
+						"name": "RegionCode",
+						"type": "UTF8"
+					},
+					{
+						"name": "Jurisdiction",
+						"type": "UTF8"
+					},
+					{
+						"name": "Date",
+						"type": "INT96"
+					},
+					{
+						"name": "C1_School_closing",
+						"type": "INT64"
+					},
+					{
+						"name": "C1_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C2_Workplace_closing",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C2_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C3_Cancel_public_events",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C3_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C4_Restrictions_on_gatherings",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C4_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C5_Close_public_transport",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C5_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C6_Stay_at_home_requirements",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C6_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C7_Restrictions_on_internal_movement",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "C7_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "C8_International_travel_controls",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "E1_Income_support",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "E1_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "E2_Debt_contract_relief",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "E3_Fiscal_measures",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "E4_International_support",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H1_Public_information_campaigns",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H1_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "H2_Testing_policy",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H3_Contact_tracing",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H4_Emergency_investment_in_healthcare",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H5_Investment_in_vaccines",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H6_Facial_Coverings",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H6_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "H7_Vaccination_policy",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H7_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "H8_Protection_of_elderly_people",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "H8_Flag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "M1_Wildcard",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "StringencyIndex",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "StringencyIndexForDisplay",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "StringencyLegacyIndex",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "StringencyLegacyIndexForDisplay",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "GovernmentResponseIndex",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "GovernmentResponseIndexForDisplay",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "ContainmentHealthIndex",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "ContainmentHealthIndexForDisplay",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "EconomicSupportIndex",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "EconomicSupportIndexForDisplay",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "id",
+						"type": "UTF8"
+					},
+					{
+						"name": "rid",
+						"type": "UTF8"
+					},
+					{
+						"name": "self",
+						"type": "UTF8"
+					},
+					{
+						"name": "etag",
+						"type": "UTF8"
+					},
+					{
+						"name": "attachments",
+						"type": "UTF8"
+					},
+					{
+						"name": "ts",
+						"type": "INT64"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Parquet_sqldb')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -2066,6 +2545,78 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/dataflow_geography')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "Parquet_geography",
+								"type": "DatasetReference"
+							},
+							"name": "geography"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "Parquet_odsgeography",
+								"type": "DatasetReference"
+							},
+							"name": "sinkgeography"
+						}
+					],
+					"transformations": [
+						{
+							"name": "selectgeography"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          Country as string,",
+						"          CountryCode as string,",
+						"          Latitude as decimal(10,5),",
+						"          Longitude as decimal(10,5)",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false,",
+						"     format: 'parquet') ~> geography",
+						"geography select(mapColumn(",
+						"          Country_Region = Country,",
+						"          Country_ISO3 = CountryCode,",
+						"          Latitude,",
+						"          Longitude",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> selectgeography",
+						"selectgeography sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          ID as integer,",
+						"          Updated_Date as date,",
+						"          Confirmed_Cases as integer,",
+						"          Confirmed__Cases_Change as integer,",
+						"          Country_ISO3 as string,",
+						"          Country_Region as string",
+						"     ),",
+						"     format: 'parquet',",
+						"     partitionFileNames:['Geography.snappy.parquet'],",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     partitionBy('hash', 1)) ~> sinkgeography"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/dataflow_metrics')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -2397,268 +2948,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/Parquet_sqldbmetrics')]",
-				"[concat(variables('factoryId'), '/datasets/Parquet_sqlservermetrics')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dataflow_policy')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "Parquet_policy",
-								"type": "DatasetReference"
-							},
-							"name": "policy"
-						}
-					],
-					"sinks": [
-						{
-							"dataset": {
-								"referenceName": "odsPolicy",
-								"type": "DatasetReference"
-							},
-							"name": "sinkpolicy"
-						}
-					],
-					"transformations": [
-						{
-							"name": "selectpolicy",
-							"description": "Select all columns but RegionName and RegionCode"
-						}
-					],
-					"scriptLines": [
-						"source(output(",
-						"          CountryName as string,",
-						"          CountryCode as string,",
-						"          RegionName as string,",
-						"          RegionCode as string,",
-						"          Jurisdiction as string,",
-						"          Date as timestamp,",
-						"          C1_School_closing as long,",
-						"          C1_Flag as boolean,",
-						"          C2_Workplace_closing as double,",
-						"          C2_Flag as boolean,",
-						"          C3_Cancel_public_events as double,",
-						"          C3_Flag as boolean,",
-						"          C4_Restrictions_on_gatherings as double,",
-						"          C4_Flag as boolean,",
-						"          C5_Close_public_transport as double,",
-						"          C5_Flag as boolean,",
-						"          C6_Stay_at_home_requirements as double,",
-						"          C6_Flag as boolean,",
-						"          C7_Restrictions_on_internal_movement as double,",
-						"          C7_Flag as boolean,",
-						"          C8_International_travel_controls as double,",
-						"          E1_Income_support as double,",
-						"          E1_Flag as boolean,",
-						"          E2_Debt_contract_relief as double,",
-						"          E3_Fiscal_measures as double,",
-						"          E4_International_support as double,",
-						"          H1_Public_information_campaigns as double,",
-						"          H1_Flag as boolean,",
-						"          H2_Testing_policy as double,",
-						"          H3_Contact_tracing as double,",
-						"          H4_Emergency_investment_in_healthcare as double,",
-						"          H5_Investment_in_vaccines as double,",
-						"          H6_Facial_Coverings as double,",
-						"          H6_Flag as boolean,",
-						"          H7_Vaccination_policy as double,",
-						"          H7_Flag as boolean,",
-						"          H8_Protection_of_elderly_people as double,",
-						"          H8_Flag as boolean,",
-						"          M1_Wildcard as double,",
-						"          StringencyIndex as double,",
-						"          StringencyIndexForDisplay as double,",
-						"          StringencyLegacyIndex as double,",
-						"          StringencyLegacyIndexForDisplay as double,",
-						"          GovernmentResponseIndex as double,",
-						"          GovernmentResponseIndexForDisplay as double,",
-						"          ContainmentHealthIndex as double,",
-						"          ContainmentHealthIndexForDisplay as double,",
-						"          EconomicSupportIndex as double,",
-						"          EconomicSupportIndexForDisplay as double,",
-						"          id as string,",
-						"          rid as string,",
-						"          self as string,",
-						"          etag as string,",
-						"          attachments as string,",
-						"          ts as long",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     ignoreNoFilesFound: false,",
-						"     format: 'parquet') ~> policy",
-						"policy select(mapColumn(",
-						"          CountryName,",
-						"          CountryCode,",
-						"          Jurisdiction,",
-						"          Date,",
-						"          C1_School_closing,",
-						"          C1_Flag,",
-						"          C2_Workplace_closing,",
-						"          C2_Flag,",
-						"          C3_Cancel_public_events,",
-						"          C3_Flag,",
-						"          C4_Restrictions_on_gatherings,",
-						"          C4_Flag,",
-						"          C5_Close_public_transport,",
-						"          C5_Flag,",
-						"          C6_Stay_at_home_requirements,",
-						"          C6_Flag,",
-						"          C7_Restrictions_on_internal_movement,",
-						"          C7_Flag,",
-						"          C8_International_travel_controls,",
-						"          E1_Income_support,",
-						"          E1_Flag,",
-						"          E2_Debt_contract_relief,",
-						"          E3_Fiscal_measures,",
-						"          E4_International_support,",
-						"          H1_Public_information_campaigns,",
-						"          H1_Flag,",
-						"          H2_Testing_policy,",
-						"          H3_Contact_tracing,",
-						"          H4_Emergency_investment_in_healthcare,",
-						"          H5_Investment_in_vaccines,",
-						"          H6_Facial_Coverings,",
-						"          H6_Flag,",
-						"          H7_Vaccination_policy,",
-						"          H7_Flag,",
-						"          H8_Protection_of_elderly_people,",
-						"          H8_Flag,",
-						"          M1_Wildcard,",
-						"          StringencyIndex,",
-						"          StringencyIndexForDisplay,",
-						"          StringencyLegacyIndex,",
-						"          StringencyLegacyIndexForDisplay,",
-						"          GovernmentResponseIndex,",
-						"          GovernmentResponseIndexForDisplay,",
-						"          ContainmentHealthIndex,",
-						"          ContainmentHealthIndexForDisplay,",
-						"          EconomicSupportIndex,",
-						"          EconomicSupportIndexForDisplay,",
-						"          id,",
-						"          rid,",
-						"          self,",
-						"          etag,",
-						"          attachments,",
-						"          ts",
-						"     ),",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> selectpolicy",
-						"selectpolicy sink(allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     format: 'parquet',",
-						"     umask: 0022,",
-						"     preCommands: [],",
-						"     postCommands: [],",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true,",
-						"     partitionBy('hash', 1)) ~> sinkpolicy"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/odsPolicy')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline_odsdates')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Data flow_Dates",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "dataflow_dates",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"dates": {},
-									"sinkdates": {}
-								}
-							},
-							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							},
-							"traceLevel": "Fine"
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/dataflow_dates')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline_odsmetrics')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Data flow_Metrics",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "dataflow_metrics",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"sqldbmetrics": {},
-									"sqlservermetrics": {},
-									"sinkrecoveries": {},
-									"sinkcases": {},
-									"sinkdeaths": {}
-								}
-							},
-							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							},
-							"traceLevel": "Fine"
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/dataflow_metrics')]"
+				"[concat(variables('factoryId'), '/datasets/Parquet_sqlservermetrics')]",
+				"[concat(variables('factoryId'), '/datasets/Parquet_odsrecoveries')]"
 			]
 		}
 	]

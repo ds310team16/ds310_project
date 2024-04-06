@@ -651,6 +651,52 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Parquet_geography')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "dbo.Country.parquet",
+						"fileSystem": "sqldb"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "Country",
+						"type": "UTF8"
+					},
+					{
+						"name": "CountryCode",
+						"type": "UTF8"
+					},
+					{
+						"name": "Latitude",
+						"type": "DECIMAL",
+						"precision": 10,
+						"scale": 5
+					},
+					{
+						"name": "Longitude",
+						"type": "DECIMAL",
+						"precision": 10,
+						"scale": 5
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Parquet_odscases')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1174,7 +1220,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Parquet_odsrecoveries')]",
+			"name": "[concat(parameters('factoryName'), '/Parquet_odsgeography')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1193,462 +1239,28 @@
 				},
 				"schema": [
 					{
-						"name": "CountryName",
+						"name": "ID",
+						"type": "INT32"
+					},
+					{
+						"name": "Updated_Date",
+						"type": "DATE"
+					},
+					{
+						"name": "Confirmed_Cases",
+						"type": "INT32"
+					},
+					{
+						"name": "Confirmed__Cases_Change",
+						"type": "INT32"
+					},
+					{
+						"name": "Country_ISO3",
 						"type": "UTF8"
 					},
 					{
-						"name": "CountryCode",
+						"name": "Country_Region",
 						"type": "UTF8"
-					},
-					{
-						"name": "Jurisdiction",
-						"type": "UTF8"
-					},
-					{
-						"name": "Date",
-						"type": "INT96"
-					},
-					{
-						"name": "C1_School_closing",
-						"type": "INT64"
-					},
-					{
-						"name": "C1_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C2_Workplace_closing",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C2_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C3_Cancel_public_events",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C3_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C4_Restrictions_on_gatherings",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C4_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C5_Close_public_transport",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C5_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C6_Stay_at_home_requirements",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C6_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C7_Restrictions_on_internal_movement",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C7_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C8_International_travel_controls",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "E1_Income_support",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "E1_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "E2_Debt_contract_relief",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "E3_Fiscal_measures",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "E4_International_support",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H1_Public_information_campaigns",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H1_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "H2_Testing_policy",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H3_Contact_tracing",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H4_Emergency_investment_in_healthcare",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H5_Investment_in_vaccines",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H6_Facial_Coverings",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H6_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "H7_Vaccination_policy",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H7_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "H8_Protection_of_elderly_people",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H8_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "M1_Wildcard",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "StringencyIndex",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "StringencyIndexForDisplay",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "StringencyLegacyIndex",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "StringencyLegacyIndexForDisplay",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "GovernmentResponseIndex",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "GovernmentResponseIndexForDisplay",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "ContainmentHealthIndex",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "ContainmentHealthIndexForDisplay",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "EconomicSupportIndex",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "EconomicSupportIndexForDisplay",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "id",
-						"type": "UTF8"
-					},
-					{
-						"name": "rid",
-						"type": "UTF8"
-					},
-					{
-						"name": "self",
-						"type": "UTF8"
-					},
-					{
-						"name": "etag",
-						"type": "UTF8"
-					},
-					{
-						"name": "attachments",
-						"type": "UTF8"
-					},
-					{
-						"name": "ts",
-						"type": "INT64"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Parquet_policy')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDataLakeStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "data_7cbcfb57-0660-4171-9783-c6d84bf0df3b_dbc98e38-2af0-4509-a6e1-1d3aed52afba.parquet",
-						"fileSystem": "policydata"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": [
-					{
-						"name": "CountryName",
-						"type": "UTF8"
-					},
-					{
-						"name": "CountryCode",
-						"type": "UTF8"
-					},
-					{
-						"name": "RegionName",
-						"type": "UTF8"
-					},
-					{
-						"name": "RegionCode",
-						"type": "UTF8"
-					},
-					{
-						"name": "Jurisdiction",
-						"type": "UTF8"
-					},
-					{
-						"name": "Date",
-						"type": "INT96"
-					},
-					{
-						"name": "C1_School_closing",
-						"type": "INT64"
-					},
-					{
-						"name": "C1_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C2_Workplace_closing",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C2_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C3_Cancel_public_events",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C3_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C4_Restrictions_on_gatherings",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C4_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C5_Close_public_transport",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C5_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C6_Stay_at_home_requirements",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C6_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C7_Restrictions_on_internal_movement",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "C7_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "C8_International_travel_controls",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "E1_Income_support",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "E1_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "E2_Debt_contract_relief",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "E3_Fiscal_measures",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "E4_International_support",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H1_Public_information_campaigns",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H1_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "H2_Testing_policy",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H3_Contact_tracing",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H4_Emergency_investment_in_healthcare",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H5_Investment_in_vaccines",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H6_Facial_Coverings",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H6_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "H7_Vaccination_policy",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H7_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "H8_Protection_of_elderly_people",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "H8_Flag",
-						"type": "BOOLEAN"
-					},
-					{
-						"name": "M1_Wildcard",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "StringencyIndex",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "StringencyIndexForDisplay",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "StringencyLegacyIndex",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "StringencyLegacyIndexForDisplay",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "GovernmentResponseIndex",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "GovernmentResponseIndexForDisplay",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "ContainmentHealthIndex",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "ContainmentHealthIndexForDisplay",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "EconomicSupportIndex",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "EconomicSupportIndexForDisplay",
-						"type": "DOUBLE"
-					},
-					{
-						"name": "id",
-						"type": "UTF8"
-					},
-					{
-						"name": "rid",
-						"type": "UTF8"
-					},
-					{
-						"name": "self",
-						"type": "UTF8"
-					},
-					{
-						"name": "etag",
-						"type": "UTF8"
-					},
-					{
-						"name": "attachments",
-						"type": "UTF8"
-					},
-					{
-						"name": "ts",
-						"type": "INT64"
 					}
 				]
 			},
