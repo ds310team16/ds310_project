@@ -1,0 +1,44 @@
+{
+	"name": "Parquet_odsdates",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "ods16"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "ID",
+				"type": "INT32"
+			},
+			{
+				"name": "Updated_Date",
+				"type": "DATE"
+			},
+			{
+				"name": "Confirmed_Cases",
+				"type": "INT32"
+			},
+			{
+				"name": "Confirmed__Cases_Change",
+				"type": "INT32"
+			},
+			{
+				"name": "Country_ISO3",
+				"type": "UTF8"
+			},
+			{
+				"name": "Country_Region",
+				"type": "UTF8"
+			}
+		]
+	}
+}
