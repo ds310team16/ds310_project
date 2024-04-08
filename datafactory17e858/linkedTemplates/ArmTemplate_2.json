@@ -41,6 +41,9 @@
 						{
 							"name": "selectpolicy",
 							"description": "Select all columns but RegionName and RegionCode"
+						},
+						{
+							"name": "derivedColumnpolicy"
 						}
 					],
 					"scriptLines": [
@@ -106,7 +109,7 @@
 						"     ignoreNoFilesFound: false,",
 						"     format: 'parquet') ~> policy",
 						"policy select(mapColumn(",
-						"          ID = id,",
+						"          PolicyID = id,",
 						"          CountryRegion = CountryName,",
 						"          CountryCode,",
 						"          Date,",
@@ -156,7 +159,8 @@
 						"     ),",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true) ~> selectpolicy",
-						"selectpolicy sink(allowSchemaDrift: true,",
+						"selectpolicy derive(CodeDate = concat(CountryCode, toString(Date))) ~> derivedColumnpolicy",
+						"derivedColumnpolicy sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     format: 'parquet',",
 						"     partitionFileNames:['Policy.snappy.parquet'],",
