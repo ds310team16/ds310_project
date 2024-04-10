@@ -28,6 +28,9 @@
 				},
 				{
 					"name": "derivedColumnpolicy"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -96,7 +99,7 @@
 				"          PolicyID = id,",
 				"          CountryRegion = CountryName,",
 				"          CountryCode,",
-				"          Date,",
+				"          Datetime = Date,",
 				"          C1_School_closing,",
 				"          C1_Flag,",
 				"          C2_Workplace_closing,",
@@ -143,7 +146,8 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectpolicy",
-				"selectpolicy derive(CodeDate = concat(CountryCode, toString(Date))) ~> derivedColumnpolicy",
+				"derivedColumn1 derive(CodeDate = concat(CountryCode, toString(Date))) ~> derivedColumnpolicy",
+				"selectpolicy derive(Date = toDate(Datetime)) ~> derivedColumn1",
 				"derivedColumnpolicy sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
