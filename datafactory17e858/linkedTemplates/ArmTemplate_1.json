@@ -273,7 +273,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "data_7cbcfb57-0660-4171-9783-c6d84bf0df3b_dbc98e38-2af0-4509-a6e1-1d3aed52afba.parquet",
+						"fileName": "data_133ea814-b724-420b-be39-91694179e8fb_b8656948-d744-4805-b43b-f57becd2f82f.parquet",
 						"fileSystem": "policydata"
 					},
 					"compressionCodec": "snappy"
