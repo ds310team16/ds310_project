@@ -158,7 +158,7 @@
 										},
 										"sink": {
 											"name": "Date",
-											"type": "DateTimeOffset"
+											"type": "Date"
 										}
 									},
 									{
